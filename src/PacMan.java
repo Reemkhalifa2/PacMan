@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+import java.util.*;
 
 public class PacMan extends JPanel {
 
@@ -43,6 +44,12 @@ public class PacMan extends JPanel {
             "X                 X",
             "XXXXXXXXXXXXXXXXXXX"
     };
+
+    HashSet<Block> walls;
+    HashSet<Block> foods;
+    HashSet<Block> ghosts;
+
+    Block packman;
 
 
 
