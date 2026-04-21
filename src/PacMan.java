@@ -98,6 +98,48 @@ public class PacMan extends JPanel {
 //        System.out.println(ghosts.size());
     }
 
+    public void loadMap(){
+        walls = new HashSet<Block>();
+        foods = new HashSet<Block>();
+        ghosts = new HashSet<Block>();
+        for(int r=0; r<rowCount; r++){
+            for ( int c =0; c< columnCount; c++){
+                String row = tileMap[r];
+                char tileMapChar = row.charAt(c);
 
+                int x= c*tileSize;
+                int y = r * tileSize;
+
+                if(tileMapChar == 'X'){//block wall
+                    Block wall = new Block(wallImage,x,y,tileSize, tileSize);
+                    walls.add(wall);
+                }else if(tileMapChar == 'b'){//blue ghost
+                    Block ghost = new Block(blueGhostImage,x,y,tileSize,tileSize);
+                    ghosts.add(ghost);
+                }else if(tileMapChar == 'o'){//orange ghost
+                    Block ghost = new Block(orangeGhostImage,x,y,tileSize,tileSize);
+                    ghosts.add(ghost);
+                }else if(tileMapChar == 'p'){//pink ghost
+                    Block ghost = new Block(pinkGhostImage,x,y,tileSize,tileSize);
+                    ghosts.add(ghost);
+                }else if(tileMapChar == 'r'){//red ghost
+                    Block ghost = new Block(redGhostImage,x,y,tileSize,tileSize);
+                    ghosts.add(ghost);
+                }else if(tileMapChar == 'P'){//Pack Man
+                    packman = new Block(pacmanRightImage,x,y,tileSize,tileSize);
+                }else if(tileMapChar == ' '){//food
+                    Block food = new Block(null, x+4, y+14, 4,4);
+                    foods.add(food);
+                }
+
+            }
+        }
+
+
+    }
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+
+    }
 
 }
