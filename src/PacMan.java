@@ -1,9 +1,31 @@
+
 import java.awt.*;
+import java.awt.event.*;
+import java.util.HashSet;
+import java.util.Random;
 import javax.swing.*;
-import java.util.*;
+
 
 public class PacMan extends JPanel {
+    class Block{
+        int x;
+        int y;
+        int width;
+        int height;
+        Image image;
+        int startX;
+        int startY;
 
+        Block(Image image, int x, int y, int width, int height){
+            this.image = image;
+            this.x= x;
+            this.y = y;
+            this.width=width;
+            this.height = height;
+            this.startX = x;
+            this.startY = y;
+        }
+    }
     private int rowCount = 21;
     private int columnCount = 19;
     private int tileSize = 32;
@@ -20,7 +42,8 @@ public class PacMan extends JPanel {
     private Image pacmanDownImage;
     private Image pacmanLeftImage;
     private Image pacmanRightImage;
-
+    //X = wall, O = skip, P = pac man, ' ' = food
+    //Ghosts: b = blue, o = orange, p = pink, r = red
     private String[] tileMap = {
             "XXXXXXXXXXXXXXXXXXX",
             "X        X        X",
@@ -56,25 +79,25 @@ public class PacMan extends JPanel {
     PacMan(){
         setPreferredSize(new Dimension(boardWidth,boardHeight));
         setBackground(Color.BLACK);
-    }
-    class Block{
-        int x;
-        int y;
-        int width;
-        int height;
-        Image image;
-        int startX;
-        int startY;
 
-        Block(Image image, int x, int y, int width, int height){
-            this.image = image;
-            this.x= x;
-            this.y = y;
-            this.width=width;
-            this.height = height;
-            this.startX = x;
-            this.startY = y;
-        }
+        //load images
+        wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
+        blueGhostImage = new ImageIcon(getClass().getResource("./blueGhost.png")).getImage();
+        redGhostImage = new ImageIcon(getClass().getResource("./redGhost.png")).getImage();
+        pinkGhostImage = new ImageIcon(getClass().getResource("./pinkGhost.png")).getImage();
+        orangeGhostImage = new ImageIcon(getClass().getResource("./orangeGhost.png")).getImage();
+
+        pacmanUpImage = new ImageIcon(getClass().getResource("./pacmanUp.png")).getImage();
+        pacmanLeftImage = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
+        pacmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
+        pacmanDownImage = new ImageIcon(getClass().getResource("./pacmanDown.png")).getImage();
+
+        loadMap();
+//        System.out.println(walls.size());
+//        System.out.println(foods.size());
+//        System.out.println(ghosts.size());
     }
+
+
 
 }
