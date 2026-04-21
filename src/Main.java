@@ -11,7 +11,7 @@ public class Main {
         frame.setSize(boardWidth,boardHeight);
         frame.setLocationRelativeTo(null);//center
         frame.setResizable(false);//can not change the size of the frame
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         PacMan pacmanGame = new PacMan();
         frame.add(pacmanGame);
         frame.pack();
