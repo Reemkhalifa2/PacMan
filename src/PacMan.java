@@ -6,7 +6,7 @@ import java.util.Random;
 import javax.swing.*;
 
 
-public class PacMan extends JPanel implements ActionListener {
+public class PacMan extends JPanel implements ActionListener, KeyListener {
 
 
     class Block{
@@ -97,9 +97,7 @@ public class PacMan extends JPanel implements ActionListener {
 
         loadMap();
         gameLoop = new Timer(50, this);
-//        System.out.println(walls.size());
-//        System.out.println(foods.size());
-//        System.out.println(ghosts.size());
+        gameLoop.start();
     }
 
     public void loadMap(){
@@ -162,6 +160,21 @@ public class PacMan extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();
+
+
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 
