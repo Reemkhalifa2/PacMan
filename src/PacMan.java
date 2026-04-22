@@ -114,6 +114,8 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     HashSet<Block> foods;
     HashSet<Block> ghosts;
     Timer gameLoop;
+    char [] directions = {'u', 'D', 'L', 'R'};
+    Random random = new Random();
 
     Block packman;
 
@@ -138,6 +140,10 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         pacmanDownImage = new ImageIcon(getClass().getResource("./pacmanDown.png")).getImage();
 
         loadMap();
+        for(Block ghost : ghosts){
+            char newDirecrio = directions[random.nextInt(4)];
+            ghost.updateDirection(newDirecrio);
+        }
         gameLoop = new Timer(50, this);
         gameLoop.start();
     }
