@@ -83,6 +83,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         setPreferredSize(new Dimension(boardWidth,boardHeight));
         setBackground(Color.BLACK);
         addKeyListener(this);
+        setFocusable(true);
 
         //load images
         wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
