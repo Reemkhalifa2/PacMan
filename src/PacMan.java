@@ -35,21 +35,23 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             this.startY = y;
         }
         void updateDirection(char direction){
-            char prevDirection = this.direction;
-            this.direction=direction;
+            this.direction = direction;
             updateVelocity();
-            this.x += this.velocityX;
-            this.y += this.velocityY;
-            for (Block wall : walls){
-                if(collision(this, wall)){
-                    this.x -= this.velocityX;
-                    this.y -= this.velocityY;
-                    this.direction = prevDirection;
-                    updateVelocity();
 
+            int nextX = this.x + this.velocityX;
+            int nextY = this.y + this.velocityY;
+
+            for (Block wall : walls){
+                if(nextX < wall.x + wall.width &&
+                        nextX + this.width > wall.x &&
+                        nextY < wall.y + wall.height &&
+                        nextY + this.height > wall.y){
+                    return; // stop if wall ahead
                 }
             }
 
+            this.x = nextX;
+            this.y = nextY;
         }
         void updateVelocity(){
             if(this.direction == 'U'){
@@ -96,7 +98,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             "XXXX XXXX XXXX XXXX",
             "OOOX X       X XOOO",
             "XXXX X XXrXX X XXXX",
-            "O       bpo       O",
+            "X       bpo       X",
             "XXXX X XXXXX X XXXX",
             "OOOX X       X XOOO",
             "XXXX X XXXXX X XXXX",
@@ -217,7 +219,26 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
                 packman.y -= packman.velocityY;
                 break;
             }
+        }//check ghosts collision
+        for (Block ghost: ghosts){
+            if(ghost.direction != 'U' && ghost.direction !='D' ){
+                ghost.updateDirection('U');
+            }
+                ghost.x += ghost.velocityX;
+                ghost.y += ghost.velocityY;
+                for(Block wall : walls){
+                    if(collision(ghost,wall)){
+                        ghost.x -= ghost.velocityX;
+                        ghost.y -= ghost.velocityY;
+                        char newDirection = directions[random.nextInt(4)];
+                        ghost.updateDirection(newDirection);
+                    }
+                }
+
+
         }
+
+
     }
     public boolean collision(Block a, Block b){
         return a.x < b.x + b.width &&
