@@ -82,6 +82,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     PacMan(){
         setPreferredSize(new Dimension(boardWidth,boardHeight));
         setBackground(Color.BLACK);
+        addKeyListener(this);
 
         //load images
         wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
@@ -164,18 +165,14 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
     }
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
+    public void keyTyped(KeyEvent e) {}
 
     @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
+    public void keyPressed(KeyEvent e) {}
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        System.out.println("KeyEvent:  "+ e.getKeyCode());
     }
 
 }
