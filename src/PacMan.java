@@ -240,7 +240,10 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             }
         }//check ghosts collision
         for (Block ghost: ghosts){
-
+            if(collision(ghost, packman)){
+                lives -=1;
+                resetPosition();
+            }
 
             if(ghost.direction != 'U' && ghost.direction !='D' ){
                 ghost.updateDirection('U');
@@ -285,6 +288,16 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         repaint();
 
 
+    }
+    public void resetPosition(){
+        packman.reset();
+        packman.velocityX= 0;
+        packman.velocityY = 0;
+        for(Block ghost : ghosts){
+            ghost.reset();
+            char newDirection = directions[random.nextInt(4)];
+            ghost.updateDirection(newDirection);
+        }
     }
     @Override
     public void keyTyped(KeyEvent e) {}
