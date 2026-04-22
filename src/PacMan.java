@@ -130,6 +130,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     int score = 0;
     int lives = 3;
     boolean gameOver = false;
+    boolean win = false;
 
 
 
@@ -226,6 +227,11 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         }else{
             g.drawString("x" + String.valueOf(lives), tileSize/2, tileSize/2);
         }
+        if(win){
+            g.drawString("WINNER" + String.valueOf(score), tileSize/2, tileSize/2);
+        }else{
+        g.drawString("x" + String.valueOf(lives), tileSize/2, tileSize/2);
+    }
     }
 
     public void move(){
@@ -276,6 +282,11 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             }
         }
         foods.remove(foodEaten);
+        if(foods.isEmpty()){
+            win = true;
+            resetPosition();
+
+        }
 
 
 
@@ -292,6 +303,8 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         move();
         repaint();
         if (gameOver){
+            gameLoop.stop();
+        }if (win){
             gameLoop.stop();
         }
 
@@ -322,6 +335,16 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             score = 0;
             gameOver = false;
             gameLoop.start();
+
+        }
+        if (win){
+            loadMap();
+            resetPosition();
+            lives = 3;
+            score = 0;
+            gameOver = false;
+            gameLoop.start();
+
         }
 
 //        System.out.println("KeyEvent:  "+ e.getKeyCode());
