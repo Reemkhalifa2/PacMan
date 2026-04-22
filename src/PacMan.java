@@ -6,7 +6,12 @@ import java.util.Random;
 import javax.swing.*;
 
 
-public class PacMan extends JPanel {
+public class PacMan extends JPanel implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
     class Block{
         int x;
         int y;
