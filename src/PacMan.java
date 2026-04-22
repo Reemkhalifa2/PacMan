@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.stream.Gatherer;
 import javax.swing.*;
 
 
@@ -314,6 +315,15 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+        if (gameOver){
+            loadMap();
+            resetPosition();
+            lives = 3;
+            score = 0;
+            gameOver = false;
+            gameLoop.start();
+        }
+
 //        System.out.println("KeyEvent:  "+ e.getKeyCode());
         if(e.getKeyCode() == KeyEvent.VK_UP){
             packman.updateDirection('U');
