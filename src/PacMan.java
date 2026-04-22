@@ -17,6 +17,13 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         Image image;
         int startX;
         int startY;
+        char direction = 'U';
+        int velocityX = 0;
+        int velocityY = 0;
+
+
+
+
 
         Block(Image image, int x, int y, int width, int height){
             this.image = image;
@@ -27,6 +34,10 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             this.startX = x;
             this.startY = y;
         }
+        void updateDirection(char direction){
+            this.direction=direction;
+        }
+
     }
     private int rowCount = 21;
     private int columnCount = 19;
