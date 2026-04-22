@@ -69,6 +69,13 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             }
         }
 
+        void reset(){
+            this.x = this.startX;
+            this.y = this.startY;
+        }
+
+
+
     }
     private int rowCount = 21;
     private int columnCount = 19;
@@ -233,6 +240,8 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             }
         }//check ghosts collision
         for (Block ghost: ghosts){
+
+
             if(ghost.direction != 'U' && ghost.direction !='D' ){
                 ghost.updateDirection('U');
             }
