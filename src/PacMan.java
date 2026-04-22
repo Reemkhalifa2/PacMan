@@ -186,6 +186,11 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             g.fillRect( food.x, food.y,food.width, food.height);
         }
     }
+
+    public void move(){
+        packman.x += packman.velocityX;
+        packman.y += packman.velocityY;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();
