@@ -7,10 +7,7 @@ import javax.swing.*;
 
 
 public class PacMan extends JPanel implements ActionListener {
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
-    }
 
     class Block{
         int x;
@@ -76,6 +73,7 @@ public class PacMan extends JPanel implements ActionListener {
     HashSet<Block> walls;
     HashSet<Block> foods;
     HashSet<Block> ghosts;
+    Timer gameLoop;
 
     Block packman;
 
@@ -98,6 +96,7 @@ public class PacMan extends JPanel implements ActionListener {
         pacmanDownImage = new ImageIcon(getClass().getResource("./pacmanDown.png")).getImage();
 
         loadMap();
+        gameLoop = new Timer(50, this);
 //        System.out.println(walls.size());
 //        System.out.println(foods.size());
 //        System.out.println(ghosts.size());
@@ -159,6 +158,11 @@ public class PacMan extends JPanel implements ActionListener {
         for(Block food : foods){
             g.fillRect( food.x, food.y,food.width, food.height);
         }
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();
+
     }
 
 }
