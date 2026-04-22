@@ -200,7 +200,16 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println("KeyEvent:  "+ e.getKeyCode());
+//        System.out.println("KeyEvent:  "+ e.getKeyCode());
+        if(e.getKeyCode() == KeyEvent.VK_UP){
+            packman.updateDirection('U');
+        }else if(e.getKeyCode() == KeyEvent.VK_UP){
+            packman.updateDirection('U');
+        }else if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            packman.updateDirection('L');
+        }else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            packman.updateDirection('R');
+        }
     }
 
 }
