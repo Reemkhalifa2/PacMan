@@ -196,6 +196,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             if(collision(packman,wall)){
                 packman.x -= packman.velocityX;
                 packman.y -= packman.velocityY;
+                break;
             }
         }
     }
@@ -224,8 +225,8 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 //        System.out.println("KeyEvent:  "+ e.getKeyCode());
         if(e.getKeyCode() == KeyEvent.VK_UP){
             packman.updateDirection('U');
-        }else if(e.getKeyCode() == KeyEvent.VK_UP){
-            packman.updateDirection('U');
+        }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+            packman.updateDirection('D');
         }else if(e.getKeyCode() == KeyEvent.VK_LEFT){
             packman.updateDirection('L');
         }else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
